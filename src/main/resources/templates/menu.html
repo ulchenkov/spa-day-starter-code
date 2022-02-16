@@ -14,6 +14,22 @@
     <p th:text="${manipedi}"></p>
 </div>
 <div id = "servicesMenu">
+    <table>
+        <th>Treatment Options</th>
+        <th:block th:each="treatment : ${appropriateFacials}">
+            <tr>
+                <td th:text="${treatment}"></td>
+            </tr>
+        </th:block>
+    </table>
+    <div th:if="${manipedi.equals('manicure')}">
+        <h3>Manicure</h3>
+        <p th:replace="fragments :: manicureDescription"></p>
+    </div>
+    <div th:unless="${manipedi.equals('manicure')}">
+        <h3>Pedicure</h3>
+        <p th:replace="fragments :: pedicureDescription"></p>
+    </div>
 </div>
 </body>
 </html>
